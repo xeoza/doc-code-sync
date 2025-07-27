@@ -18,7 +18,9 @@ Doc-Sync automatically generates, validates, and updates docs from code annotati
 - **IDE Integration**: VS Code plugin for local checks 
 - **Git Hooks & CI/CD**: Block commits with outdated documentation (maybe) 
 
-## 🏗 System Architecture
+## 🏗 Application Architecture
+
+### High-Level Design
 
 ```mermaid
 graph TD
