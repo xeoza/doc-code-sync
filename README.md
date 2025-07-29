@@ -18,28 +18,16 @@ Doc-Sync automatically generates, validates, and updates docs from code annotati
 - **IDE Integration**: VS Code plugin for local checks 
 - **Git Hooks & CI/CD**: Block commits with outdated documentation (maybe) 
 
-```python
-# Example: Python  → Markdown/Confluence
-def calculate(a: int, b: int) -> int:
-    """Sum two numbers.
-    
-    Args:
-        a: First number
-        b: Second number
-        
-    Returns:
-        Sum result
-    """
-    return a + b
-```
+## 🏗 Application Architecture
 
-## 🏗 System Architecture
+### High-Level Design
 
 ```mermaid
-flowchart TD
-    A[VS Code Extension] -->|AST Analysis| B[Core Engine]
-    C[MCP Server] -->|Deobfuscation Data| B
-    B -->|Generated Docs| D[Confluence/Notion]
-    B -->|Validation| E[CI/CD Pipeline]
-    F[Git Hooks] -->|Pre-commit Checks| B
+graph TD
+    A[Developer Machine] -->|Runs| B[VS Code]
+    B --> C[Local MCP Server]
+    C -->|HTTPS| D[Remote MCP Cache]
+    B -->|Pushes| E[CI Server]
+    E --> F[Doc Generation Job]
+    F --> G[Confluence Cloud]
 ```
